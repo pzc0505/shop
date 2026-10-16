@@ -1,9 +1,4 @@
 import { useState } from 'react'
-// import heroImg from './assets/hero.png'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -31,28 +26,37 @@ function App() {
 
       <div className="main-bg"></div>
 
-      <Container>
-        <Row>
-          <Col>
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].content}</p>
-            <p>{shoes[0].price}</p>
-          </Col>
-          <Col>
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%" />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="80%" />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-        </Row>
-      </Container>
+      <div className="prod-list-wrap">
+        <Container>
+          <Row>
+            {
+              shoes.map((e,i)=>{
+                return(
+                  <Card key={shoes[i].id} shoes={shoes} i={i} />
+                )
+              })
+            }
+          </Row>
+        </Container>
+      </div>
     </div>
   )
 }
+
+// 방법1
+function Card(props){
+  return (
+    <Col key={props.shoes[props.i].id}>
+      <img src={`https://codingapple1.github.io/shop/shoes${props.i + 1}.jpg`} width="80%" />
+      <h4>{props.shoes[props.i].title}</h4>
+      <p>{props.shoes[props.i].content}</p>
+      <p>{props.shoes[props.i].price}</p>
+    </Col>
+  )
+}
+
+// 숙제1. 상품 컴포넌트화
+// 숙제2. 데이터바인딩
+// 숙제3. 반복문 사용하여 상품 목록 
 
 export default App

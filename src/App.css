@@ -18,3 +18,7 @@
   height: 300px;
   background: url('./assets/img/main_bg.jpg') no-repeat center / cover;
 }
+
+.prod-list-wrap {
+  text-align: center;
+}
