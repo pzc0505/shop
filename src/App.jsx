@@ -4,7 +4,7 @@
 // import viteLogo from './assets/vite.svg'
 
 
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   return (
-    <div>
+    <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -23,16 +23,6 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="success">Success</Button>
-      <Button variant="warning">Warning</Button>
-      <Button variant="danger">Danger</Button>
-      <Button variant="info">Info</Button>
-      <Button variant="light">Light</Button>
-      <Button variant="dark">Dark</Button>
-      <Button variant="link">Link</Button>
     </div>
   )
 }
