@@ -28,20 +28,33 @@ function App() {
 
       <div className="prod-list-wrap">
         <Container>
+          {/* 방법1 */}
           <Row>
             {
-              shoes.map((e,i)=>{
+              shoes.map((a,i)=>{
                 return(
                   <Card key={shoes[i].id} shoes={shoes} i={i} />
                 )
               })
             }
           </Row>
+
+          {/* 방법2 */}
+          <Row>
+            <Card2 shoes={shoes[0]} i={0}></Card2>
+            <Card2 shoes={shoes[1]} i={1}></Card2>
+            <Card2 shoes={shoes[2]} i={2}></Card2>
+          </Row>
         </Container>
       </div>
     </div>
   )
 }
+
+// 숙제
+// 1. 상품카드 컴포넌트화
+// 2. 데이터바인딩
+// 3. 반복문 사용하여 상품 목록
 
 // 방법1
 function Card(props){
@@ -55,8 +68,16 @@ function Card(props){
   )
 }
 
-// 숙제1. 상품 컴포넌트화
-// 숙제2. 데이터바인딩
-// 숙제3. 반복문 사용하여 상품 목록 
+// 방법2: 그냥 데이터 단조로울 때 간단하게 처리
+function Card2(props){
+  return (
+    <Col key={props.shoes.id}>
+      <img src={'https://codingapple1.github.io/shop/shoes'+ (props.i + 1) +'.jpg'} width="80%" />
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.content}</p>
+      <p>{props.shoes.price}</p>
+    </Col>
+  )
+}
 
 export default App
