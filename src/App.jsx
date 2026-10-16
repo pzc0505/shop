@@ -23,12 +23,12 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{ navigate('/')}}>Home</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('/detail')}}>상세페이지</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/about')}}>어바웃</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/about/member')}}>멤버</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/about/location')}}>위치</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/event')}}>이벤트</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/event/one')}}>이벤트1</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/event/two')}}>이벤트2</Nav.Link>
+            {/* <Nav.Link onClick={()=>{ navigate('/about')}}>어바웃</Nav.Link> */}
+            {/* <Nav.Link onClick={()=>{ navigate('/about/member')}}>멤버</Nav.Link> */}
+            {/* <Nav.Link onClick={()=>{ navigate('/about/location')}}>위치</Nav.Link> */}
+            {/* <Nav.Link onClick={()=>{ navigate('/event')}}>이벤트</Nav.Link> */}
+            {/* <Nav.Link onClick={()=>{ navigate('/event/one')}}>이벤트1</Nav.Link> */}
+            {/* <Nav.Link onClick={()=>{ navigate('/event/two')}}>이벤트2</Nav.Link> */}
             {/* <Nav.Link onClick={()=>{ navigate(-1)}}>뒤로가기</Nav.Link> */}
           </Nav>
         </Container>
@@ -50,16 +50,8 @@ function App() {
             </div>
           </>
         } />
-        <Route path="/detail" element={ <Detail /> } />
-        <Route path="/about" element={ <About/> } >  
-          <Route path="member" element={ <div>멤버들</div> } />
-          <Route path="location" element={ <div>회사위치</div> } />
-        </Route>
-        <Route path="/event" element={ <Event/> } >  
-          <Route path="one" element={ <div>첫 주문시 양배추즙 서비스</div> } />
-          <Route path="two" element={ <div>생일기념 쿠폰 받기</div> } />
-        </Route>
-        <Route path="*" element={ <div>404</div> } />
+        
+        <Route path="/detail/:id" element={ <Detail shoes={shoes} /> } />
       </Routes>
     </div>
   )
@@ -76,23 +68,23 @@ function Card(props){
   )
 }
 
-function About(){
-  return(
-    <>
-      <div>회사정보임</div>
-      <Outlet></Outlet>
-    </>
-  )
-}
+// function About(){
+//   return(
+//     <>
+//       <div>회사정보임</div>
+//       <Outlet></Outlet>
+//     </>
+//   )
+// }
 
-function Event(){
-  return(
-    <>
-      <h4>오늘의 이벤트</h4>
-      <Outlet></Outlet>
-    </>
-  )
-}
+// function Event(){
+//   return(
+//     <>
+//       <h4>오늘의 이벤트</h4>
+//       <Outlet></Outlet>
+//     </>
+//   )
+// }
 
 
 export default App
