@@ -7,9 +7,10 @@ import './App.css'
 import data from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/Detail.jsx'
+import axios from 'axios';
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
 
   return (
@@ -47,24 +48,45 @@ function App() {
                   })}
                 </Row>
               </Container>
+              <button onClick={()=>{
+                axios.get('https://codingapple1.github.io/shop/data2.json').then((result)=>{ 
+                  // // 1.
+                  // let copy = [...shoes]
+                  // copy.push(...result.data)
+                  // setShoes(copy)
+
+                  // // 2.
+                  // let copy = [...shoes, ...결과.data]
+                  // setShoes(copy)
+                  
+                  // 3.
+                  setShoes([...shoes, ...result.data]);
+                }).catch(()=>{
+                  alert('실패함')
+                })
+                
+
+              }}>더보기</button>
             </div>
           </>
         } />
         
         <Route path="/detail/:id" element={ <Detail shoes={shoes} /> } />
       </Routes>
+      
+
     </div>
   )
 }
 
 function Card(props){
   return (
-    <Col key={props.shoes[props.i].id}>
+    <div className="col-md-4" key={props.shoes[props.i].id}>
       <img src={`https://codingapple1.github.io/shop/shoes${props.i + 1}.jpg`} width="80%" />
       <h4>{props.shoes[props.i].title}</h4>
       <p>{props.shoes[props.i].content}</p>
       <p>{props.shoes[props.i].price}</p>
-    </Col>
+    </div>
   )
 }
 
