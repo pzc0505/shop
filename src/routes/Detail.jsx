@@ -25,8 +25,17 @@ function Detail(props){
 	let {id} = useParams();
 	let 찾은상품 = props.shoes.find( (item)=> item.id == id);
 
+	let [mvmt, setMvmt ] = useState('');
+
+	useEffect(()=>{
+		let a = setTimeout(()=>{
+			setMvmt('mvmt-fade-in'); 
+		}, 10)
+		return () => clearTimeout(a)
+	}, [mvmt])
+
 	return (
-		<div className="container">
+		<div className={`container ${mvmt}`}>
 			<div className="row">
 				{
 					msgBox == true ? <AlertBox /> : null

@@ -22,3 +22,12 @@
 .prod-list-wrap {
   text-align: center;
 }
+
+.mvmt-fade {
+  opacity: 0; 
+}
+
+.mvmt-fade-in {
+  opacity: 1; 
+  transition: 500ms ease-in-out;
+}
