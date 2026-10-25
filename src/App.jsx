@@ -63,8 +63,7 @@ function App() {
                   setShoes([...shoes, ...result.data]);
                 }).catch(()=>{
                   alert('실패함')
-                })
-                
+                });
 
               }}>더보기</button>
             </div>

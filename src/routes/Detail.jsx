@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Nav } from 'react-bootstrap';
 
 function Detail(props){
 	let [count, setCount] = useState(0);
 	let [msgBox, setMsgBox] = useState(true);
 	let [inputVal, setInputVal] = useState(0)
+	let [tablist, setTablist] = useState(0);
 
 	// mount, update
 	useEffect(()=>{
@@ -35,7 +37,6 @@ function Detail(props){
 					<img src={`https://codingapple1.github.io/shop/shoes${Number(찾은상품.id) + 1}.jpg`} width="100%" />
 				</div>
 
-
 				<input type="text" value={inputVal} onChange={ (e)=>{ 
 					let val = e.target.value
 					setInputVal(val);
@@ -53,10 +54,47 @@ function Detail(props){
 					<p>{찾은상품.price}원</p>
 					<button className="btn btn-danger">주문하기</button> 
 				</div>
+
+				<div style={ { marginTop: 30 }}></div>
+				
+				<Nav variant="pills" defaultActiveKey="link-0">
+					<Nav.Item>
+						<Nav.Link eventKey="link-0" onClick={ ()=>{ setTablist(0)} }>탭0</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link eventKey="link-1" onClick={ ()=>{ setTablist(1)} }>탭1</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link eventKey="link-2" onClick={ ()=>{ setTablist(2)} }>탭2</Nav.Link>
+					</Nav.Item>
+				</Nav>
+				<Tabcont tablist={tablist} />
+				
+				<div style={ { paddingBottom: 100 } }></div>
 			</div>
 		</div> 
 	)
 }
+
+function Tabcont(prop){
+	if( prop.tablist == 0 ){
+		return <div>탭0</div>
+	}else if( prop.tablist == 1 ){
+		return <div>탭1</div>
+	}else if( prop.tablist == 2 ){
+		return <div>탭2</div>
+	}
+}
+
+// function Tabcont({tablist}){
+// 	if( tablist == 0 ){
+// 		return <div>탭0</div>
+// 	}else if( tablist == 1 ){
+// 		return <div>탭1</div>
+// 	}else if( tablist == 2 ){
+// 		return <div>탭2</div>
+// 	}
+// }
 
 
 function AlertBox(){
