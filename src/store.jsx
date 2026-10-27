@@ -4,18 +4,18 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 let user = createSlice({// useState의 역할
 	name : 'user',
-	initialState : 'kim',
+	initialState : { name : 'kim', age: 20 },
 	reducers:{
 		changeName(state){
-			return (
-				console.log(state),
-				'john ' + state
-			)
-		}
+			state.name = 'park'
+		},
+		increaseAge(state, action){
+			state.age += action.payload
+		},
 	}
 });
 
-export let { changeName } = user.actions
+export let { changeName, increaseAge } = user.actions
 
 let stock = createSlice({// useState의 역할
 	name : 'stock',
