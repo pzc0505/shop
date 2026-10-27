@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
+
+import { Context1 } from './../App.jsx'
 
 function Detail(props){
 	let [count, setCount] = useState(0);
@@ -36,6 +38,7 @@ function Detail(props){
 
 	return (
 		<div className={`container ${mvmt}`}>
+			
 			<div className="row">
 				{
 					msgBox == true ? <AlertBox /> : null
@@ -86,8 +89,15 @@ function Detail(props){
 }
 
 function Tabcont(prop){
+	let {재고} = useContext(Context1);
+
 	if( prop.tablist == 0 ){
-		return <div>탭0</div>
+		return (
+			<div>
+				탭0
+				{재고}
+			</div>
+		)
 	}else if( prop.tablist == 1 ){
 		return <div>탭1</div>
 	}else if( prop.tablist == 2 ){
