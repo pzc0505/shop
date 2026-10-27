@@ -8,6 +8,7 @@ import data from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/Detail.jsx'
 import axios from 'axios';
+import Cart from './routes/Cart.jsx'
 
 export let Context1 = createContext();
 
@@ -29,6 +30,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{ navigate('/')}}>Home</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('/detail')}}>상세페이지</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/cart')}}>장빠구니</Nav.Link>
             {/* <Nav.Link onClick={()=>{ navigate('/about')}}>어바웃</Nav.Link> */}
             {/* <Nav.Link onClick={()=>{ navigate('/about/member')}}>멤버</Nav.Link> */}
             {/* <Nav.Link onClick={()=>{ navigate('/about/location')}}>위치</Nav.Link> */}
@@ -80,6 +82,8 @@ function App() {
               <Detail shoes={shoes} /> 
             </Context1.Provider>
           } />
+
+        <Route path="/cart" element={ <Cart /> } />
       </Routes>
       
 
