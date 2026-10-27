@@ -77,7 +77,7 @@ function Detail(props){
 						<Nav.Link eventKey="link-2" onClick={ ()=>{ setTablist(2)} }>탭2</Nav.Link>
 					</Nav.Item>
 				</Nav>
-				<Tabcont tablist={tablist} />
+				<Tabcont tablist={tablist} shoes={props.shoes} />
 				
 				<div style={ { paddingBottom: 100 } }></div>
 			</div>
@@ -85,12 +85,14 @@ function Detail(props){
 	)
 }
 
-function Tabcont(prop){
-	if( prop.tablist == 0 ){
-		return <div>탭0</div>
-	}else if( prop.tablist == 1 ){
+function Tabcont(props){
+	if( props.tablist == 0 ){
+		return <div>
+			{props.shoes[0].title}
+		</div>
+	}else if( props.tablist == 1 ){
 		return <div>탭1</div>
-	}else if( prop.tablist == 2 ){
+	}else if( props.tablist == 2 ){
 		return <div>탭2</div>
 	}
 }
