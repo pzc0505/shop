@@ -25,25 +25,23 @@ function Cart(){
 				</thead>
 				<tbody>
 					{
-						state.userStock.map((e, i)=>{
-							return(
-								<tr>
-									<td>
-										{state.userStock[i].id}	
-									</td>
-									<td>
-										{state.userStock[i].name}
-									</td>
-									<td>
-										{state.userStock[i].count}
-									</td>
-									<td>
-										<button>+</button>
-										<button>-</button>
-									</td>
-								</tr>
-							)
-						})
+						state.userStock.map((e, i) =>
+							<tr key={i}>
+								<td>
+									{state.userStock[i].id}	
+								</td>
+								<td>
+									{state.userStock[i].name}
+								</td>
+								<td>
+									{state.userStock[i].count}
+								</td>
+								<td>
+									<button>+</button>
+									<button>-</button>
+								</td>
+							</tr>
+						)
 					}
 				</tbody>
 			</Table> 
