@@ -4,6 +4,11 @@ import { Nav } from 'react-bootstrap';
 
 import { Context1 } from './../App.jsx'
 
+import { addList } from './../store.jsx'
+
+import { useDispatch, useSelector } from 'react-redux'
+
+
 function Detail(props){
 	let [count, setCount] = useState(0);
 	let [msgBox, setMsgBox] = useState(true);
@@ -36,6 +41,8 @@ function Detail(props){
 		return () => clearTimeout(a)
 	}, [mvmt])
 
+	let dispatch = useDispatch();
+
 	return (
 		<div className={`container ${mvmt}`}>
 			
@@ -64,7 +71,11 @@ function Detail(props){
 					<h4 className="pt-5">{찾은상품.title}</h4>
 					<p>{찾은상품.content}</p>
 					<p>{찾은상품.price}원</p>
-					<button className="btn btn-danger">주문하기</button> 
+					<button className="btn btn-danger" onClick={()=>{
+						dispatch(addList(
+							{id : 4, name : 찾은상품.title, count : 1},
+						))
+					}}>주문하기</button> 
 				</div>
 
 				<div style={ { marginTop: 30 }}></div>
@@ -95,7 +106,6 @@ function Tabcont(prop){
 		return (
 			<div>
 				탭0
-				{재고}
 			</div>
 		)
 	}else if( prop.tablist == 1 ){

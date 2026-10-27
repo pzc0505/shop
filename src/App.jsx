@@ -29,7 +29,7 @@ function App() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{ navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/detail')}}>상세페이지</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/detail/0')}}>상세페이지</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('/cart')}}>장빠구니</Nav.Link>
             {/* <Nav.Link onClick={()=>{ navigate('/about')}}>어바웃</Nav.Link> */}
             {/* <Nav.Link onClick={()=>{ navigate('/about/member')}}>멤버</Nav.Link> */}
