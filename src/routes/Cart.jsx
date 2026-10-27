@@ -5,13 +5,16 @@ function Cart(){
 
 	// let state = useSelector((state)=>{ return state })
 	// console.log(state)
-	let user = useSelector((state)=> state.user )
-	console.log(user)
+	// let user = useSelector((state)=> state.user )
+	// console.log(user)
+	
+	// let state = useSelector((state)=>{ return state })
+	// console.log(state.userStock)
+	let state = useSelector((state)=> state)
 
 	return(
 		<div>
 			<Table>
-				<caption>캡션</caption>
 				<thead>
 					<tr>
 					<th>#</th>
@@ -21,12 +24,27 @@ function Cart(){
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-					<td>1</td>
-					<td>안녕</td>
-					<td>안녕</td>
-					<td>안녕</td>
-					</tr>
+					{
+						state.userStock.map((e, i)=>{
+							return(
+								<tr>
+									<td>
+										{state.userStock[i].id}	
+									</td>
+									<td>
+										{state.userStock[i].name}
+									</td>
+									<td>
+										{state.userStock[i].count}
+									</td>
+									<td>
+										<button>+</button>
+										<button>-</button>
+									</td>
+								</tr>
+							)
+						})
+					}
 				</tbody>
 			</Table> 
 		</div>
