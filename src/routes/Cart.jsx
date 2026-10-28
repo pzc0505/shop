@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCount, alignProd } from './../store.jsx'
+import { addCount, alignProd, removeList } from './../store.jsx'
 import { changeName, increaseAge } from './../store/userSlice.jsx'
 
 function Cart(){
@@ -30,12 +30,13 @@ function Cart(){
 					<th>상품명</th>
 					<th>수량</th>
 					<th>변경하기</th>
+					<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
 					{
 						state.userStock.map((e, i) =>
-							<tr key={i}>
+							<tr key={state.userStock[i].id}>
 								<td>
 									{state.userStock[i].id}	
 								</td>
@@ -47,8 +48,14 @@ function Cart(){
 								</td>
 								<td>
 									<button onClick={()=>{
-										dispatch(addCount(i))
+										// dispatch(addCount(i))
+										dispatch(addCount(state.userStock[i].id))
 									}}>+</button>
+								</td>
+								<td>
+									<button onClick={()=>{
+										dispatch(removeList(state.userStock[i].id))
+									}}>X</button>
 								</td>
 							</tr>
 						)

@@ -20,28 +20,47 @@ import user from './store/userSlice.jsx'
 let userStock = createSlice({// useState의 역할
 	name : 'userStock_name',
 	initialState : [
-		{id : 0, name : 'White and Black', count : 2},
-		{id : 1, name : 'Grey Yordan', count : 1},
-		{id : 2, name : 'Black Shoes', count : 3},
-		{id : 3, name : 'Yellow Belt', count : 10},
+		{id : 0, name : 'White and Black', count : 1},
+		{id : 1, name : 'Red Knit', count : 1},
+		{id : 2, name : 'Grey Yordan', count : 1},
 	],
 	reducers:{
-		addCount(state, action){
-			state[action.payload].count += 1
-		},
 		alignProd(state){
 			console.log(state)
 			state.sort((a, b) => {
 				return a.name.localeCompare(b.name);
 			});
 		},
-		addList(state, action){
-			state.push(action.payload)
-			console.log('addList')
+		addCount(state, action){
+			let num = state.findIndex((a)=>{ return a.id === action.payload })
+			state[num].count ++
 		},
+		addList(state, action){
+			let isProdExist = state.find( state => state.id === action.payload.id )
+
+			// console.log(isProdExist)
+			if( isProdExist ){
+				console.log('있다')
+				
+				isProdExist.count++
+			}else{
+				console.log('없다')
+
+				state.push(action.payload)
+			}
+		},
+		removeList(state, action){
+			let targetIndex  = state.findIndex( state => state.id === action.payload )
+			// console.log('action.payload : ' + action.payload)
+			// console.log('targetIndex : ' + targetIndex )
+
+			if( targetIndex !== -1 ){
+				state.splice(targetIndex, 1);
+			}
+		}
 	}
 });
-export let { addCount, alignProd, addList } = userStock.actions
+export let { addCount, alignProd, addList, removeList } = userStock.actions
 
 export default configureStore({
   reducer: {

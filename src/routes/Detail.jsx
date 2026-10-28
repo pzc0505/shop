@@ -73,7 +73,7 @@ function Detail(props){
 					<p>{찾은상품.price}원</p>
 					<button className="btn btn-danger" onClick={()=>{
 						dispatch(addList(
-							{id : 4, name : 찾은상품.title, count : 1},
+							{id : 3, name : 찾은상품.title, count : 1},
 						))
 					}}>주문하기</button> 
 				</div>
