@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -15,6 +15,9 @@ export let Context1 = createContext();
 
 
 function App() {
+  useEffect(()=>{
+    localStorage.setItem('watched', JSON.stringify( [] ))
+  })
   let [shoes, setShoes] = useState(data);
   let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate();
@@ -93,7 +96,25 @@ function App() {
 
 function Card(props){
   return (
-    <div className="col-md-4" key={props.shoes[props.i].id}>
+    <div className="col-md-4" key={props.shoes[props.i].id} onClick={()=>{
+      // 1.현재 로컬스토리지 값을 불러옴
+      let watchlist = localStorage.getItem('watched');
+      console.log(watchlist);
+      
+      // 1.1. 불러온 데이터를 배열형식으로 전환함
+      let cvtData = JSON.parse(watchlist);
+      
+      // 2.클릭한 상품의 index를 현재 배열에 push함
+      // if( !cvtData.includes(props.i) ){
+        console.log('있어');
+        cvtData.push(props.i);
+        console.log(cvtData);
+      // }
+
+      // 3.push한 인덱스를 다시 로컬 스토리지로 전달함.
+      localStorage.setItem('watched', JSON.stringify(cvtData))
+      
+    }}>
       <img src={`https://codingapple1.github.io/shop/shoes${props.i + 1}.jpg`} width="80%" />
       <h4>{props.shoes[props.i].title}</h4>
       <p>{props.shoes[props.i].content}</p>
