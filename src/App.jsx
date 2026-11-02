@@ -22,6 +22,20 @@ function App() {
   let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate();
 
+
+  let [count, setCount] = useState(0);
+  let [age, setAge] = useState(20);
+
+  useEffect(()=>{
+    if( count != 0 && count < 3){
+      setAge(age+1)
+    }
+    // count < 3 && setAge(age+1)
+    return ()=>{
+    }
+  },[count])
+
+  
   return (
     <div className="App">
       {/* GNB */}
@@ -49,6 +63,12 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
+            <div>
+              <div>안녕하십니까 전 {age}</div>
+              <button onClick={()=>{
+                setCount(count+1)
+              }}>누르면한살먹기</button>
+            </div>
             <div className="main-bg"></div>
             <div className="prod-list-wrap">
               <Container>
